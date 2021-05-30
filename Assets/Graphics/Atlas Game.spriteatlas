@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas Game
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 1
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: iPhone
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 33
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 32
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 28912c915ee574946953b2fd07a974cf, type: 3}
+    totalSpriteSurfaceArea: 27112823
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: e5a71f00e15a5aa459aac63b67f4c3f8, type: 3}
+  - {fileID: 21300000, guid: 229a1b10edb4d7648bb15a3e0716415a, type: 3}
+  - {fileID: 21300000, guid: 2d6f1d9068f1e1e479efaeccc9337fbb, type: 3}
+  - {fileID: 21300000, guid: 9afc9fb055d4bc74691b4481dc524ae9, type: 3}
+  - {fileID: 21300000, guid: d44c82c09f14647449314fbdf7683a1b, type: 3}
+  - {fileID: 21300000, guid: 8279bdc0ab0d7c44e99e13588e19ab20, type: 3}
+  - {fileID: 21300000, guid: 0a5c62e039f73a64ba9acab840c87fb8, type: 3}
+  - {fileID: 21300000, guid: 417e4031c6278c7419f7edcf9aa4f1af, type: 3}
+  - {fileID: 21300000, guid: 0c1ac2817de33df44af614353e40479f, type: 3}
+  - {fileID: 21300000, guid: 7c94a0d1f3548a941acffd0475cb721f, type: 3}
+  - {fileID: 21300000, guid: 504cfde1f986dca4db4967fb88b67d76, type: 3}
+  - {fileID: 21300000, guid: c26ea302eee904248b875860c839ec02, type: 3}
+  - {fileID: 21300000, guid: 9bd47a0227217aa4687682ebf8b907fc, type: 3}
+  - {fileID: 21300000, guid: 62068712115cf0a4cacd2befe475e6c7, type: 3}
+  - {fileID: 21300000, guid: d5ba3c12156a87a4588ead22431a2bfd, type: 3}
+  - {fileID: 21300000, guid: 126559222a6814944888d40e6f03ed67, type: 3}
+  - {fileID: 21300000, guid: 2ae67f520064b5b4386a979205bb3107, type: 3}
+  - {fileID: 21300000, guid: f281b1f2c30a37e49a9890f018d5a5dc, type: 3}
+  - {fileID: 7143908108017341763, guid: ae94e503a6a772244858bef42727562b, type: 3}
+  - {fileID: 21300000, guid: cd9fb903575d35d42a7f773cc1575c62, type: 3}
+  - {fileID: 21300000, guid: f0e2ec13cdf7fb74ca2e02be51e6a28f, type: 3}
+  - {fileID: 21300000, guid: 2a2e58a37999fcc4a8778d99bb252d78, type: 3}
+  - {fileID: 21300000, guid: 3fd13ef3a6390b4469b718b9341313f1, type: 3}
+  - {fileID: 21300000, guid: fed5b7041085d38408639a964150df1d, type: 3}
+  - {fileID: 21300000, guid: 79d01b54d17db2b43831b8c59c3ed796, type: 3}
+  - {fileID: 21300000, guid: 6abed194c0abdf049b20466f909ce3b2, type: 3}
+  - {fileID: 21300000, guid: 2fd5fcc4f01f6bc42b5fd74ef8015d1f, type: 3}
+  - {fileID: 21300000, guid: d3052c55962e1e646af2b03445389097, type: 3}
+  - {fileID: 21300000, guid: 4f0643959305ea44a89f5574b9fe2914, type: 3}
+  - {fileID: 21300000, guid: f186b726bff90ec48a76684ab9655ba2, type: 3}
+  - {fileID: 21300000, guid: 962426567cb1ede499f6bc1feac6cb2c, type: 3}
+  - {fileID: 21300000, guid: ecfe9dd69065adc4198d1779d14b8f20, type: 3}
+  - {fileID: 21300000, guid: e20cecf6e00979c4b984f696a815cf36, type: 3}
+  - {fileID: 21300000, guid: 6aa78367cd3c6dc4fb422493c18af6f6, type: 3}
+  - {fileID: 21300000, guid: 7abeea8728fa8c244a8a1a34ac3c99fe, type: 3}
+  - {fileID: 21300000, guid: 3e5908c7709b36e4faae08dc485643a4, type: 3}
+  - {fileID: 21300000, guid: 921a3dd773d1056439d334876cde3f86, type: 3}
+  - {fileID: 21300000, guid: 693eafd7344ee5a40b0a475ab05dcef9, type: 3}
+  - {fileID: 21300000, guid: c5568ee7f2c841a49a8d4a5a8f56e2e7, type: 3}
+  - {fileID: 21300000, guid: 0f1af648d31c46943a3510a7ff7fc69b, type: 3}
+  - {fileID: 21300000, guid: a8e687e820cc9214ab9782eb6b9764e4, type: 3}
+  - {fileID: 21300000, guid: b5d24e09c8c6d054383d34b4b27f2787, type: 3}
+  - {fileID: 21300000, guid: 8b68ee0932ca3234dbdf62a9a5eb519d, type: 3}
+  - {fileID: 21300000, guid: 17dd783943417024ca43898a0aebf910, type: 3}
+  - {fileID: 21300000, guid: 78267939321284c4ea528dbeb32b1670, type: 3}
+  - {fileID: 21300000, guid: 21799569fb6f09f4caeae1d44f465805, type: 3}
+  - {fileID: 21300000, guid: 7ebba5f91b81de14b840d5adf4be3af0, type: 3}
+  - {fileID: 21300000, guid: ab16f33a3528e404dbad5211afd8adf4, type: 3}
+  - {fileID: 21300000, guid: 552daa5a213fc894d96010d4ff5dac63, type: 3}
+  - {fileID: 21300000, guid: 5f53448a830f5244caac45741b8b2e16, type: 3}
+  - {fileID: 21300000, guid: 590044bae220d05418fd2b55c9ea6043, type: 3}
+  - {fileID: 21300000, guid: da0429ca2a7c69b4ebfc29c524dc9096, type: 3}
+  - {fileID: 7482667652216324306, guid: cd74212b8dd8cc64faf32b888ca72324, type: 3}
+  - {fileID: 21300000, guid: 1918933bc0b7a0e44af8b8d1d46e2afe, type: 3}
+  - {fileID: -5177388603050735206, guid: 90273f6b0b7945541bfdc0940d6f4d16, type: 3}
+  - {fileID: 21300000, guid: 005cd79b7c4d01441be05b92122e1661, type: 3}
+  - {fileID: 21300000, guid: 5e3159db4ba77274195187a56e7f50e9, type: 3}
+  - {fileID: 21300000, guid: 4b9e78eb98be49a4caf672fb98af9799, type: 3}
+  - {fileID: 21300000, guid: 422ab84c51bba8444bc6e0eca85d95a3, type: 3}
+  - {fileID: 21300000, guid: f7b7fb5cf34c77345a3bf173faff9704, type: 3}
+  - {fileID: 21300000, guid: b2346d6c3828b104f8d463f670ae90e9, type: 3}
+  - {fileID: 21300000, guid: 88dbbf6c039b42d46afc42db28a94e63, type: 3}
+  - {fileID: 21300000, guid: ceeeb17cce6821d49b8b2858fc86a897, type: 3}
+  - {fileID: 21300000, guid: b94fde9c7cd97f644bf29b5bbcc1fe35, type: 3}
+  - {fileID: 21300000, guid: e1b692cc75d72f9479ba3135c34df4a1, type: 3}
+  - {fileID: 21300000, guid: 655765fc4df68c04f98ea9c7efc94e8b, type: 3}
+  - {fileID: 21300000, guid: 8110300db81875c48b178be059a3af92, type: 3}
+  - {fileID: 21300000, guid: 1e36491d931b12845a422891cbe2b893, type: 3}
+  - {fileID: 21300000, guid: 5b42609dd8a7f594b8333b67329b1787, type: 3}
+  - {fileID: 21300000, guid: 5bd0560ee5c223f41bc1110f6d03612d, type: 3}
+  - {fileID: 21300000, guid: d9f6fd2ea93fbfd4da645c161d89ab41, type: 3}
+  - {fileID: 21300000, guid: 1882acbeec774d64e873155bb04c0a67, type: 3}
+  - {fileID: 21300000, guid: a20533deef3111c408962534121bb14b, type: 3}
+  - {fileID: 21300000, guid: f8d165de56f076446a6aab3547087e58, type: 3}
+  - {fileID: 21300000, guid: b390406f1f187ba4f9685e3f08847b14, type: 3}
+  - {fileID: 21300000, guid: ef3f5b9fbb51f0a4b9174e936811f18d, type: 3}
+  - {fileID: 21300000, guid: 01fcc5ef860e852438660d5b33057be1, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - howto1
+  - hand
+  - Sound On Button
+  - Red Moves
+  - emoji3 1
+  - Lock
+  - Main Menu Button
+  - Menu Star Full
+  - Wall
+  - Music On
+  - eyes
+  - Sound Off Button
+  - emoji3
+  - "Oyun Alan\u0131 Back"
+  - PopUp
+  - Star Place
+  - Plus
+  - Settings Button
+  - 6-Sliced_0
+  - Settings Button Flat
+  - Play Bigger
+  - Lose
+  - howto3
+  - emoji1 1
+  - Win
+  - Points Border
+  - Empty Moves
+  - Lives
+  - No Fancy
+  - Level Rect
+  - Show Lives Button
+  - Menu Button
+  - PlayButton
+  - Show Lives Off Button
+  - LockOn
+  - Header Background
+  - Points
+  - Yellow Moves
+  - Vibration Off Button
+  - Banner Button Reverse
+  - Banner
+  - Yes Fancy
+  - howto2
+  - Game Back
+  - BoomPack Main Menu Logo
+  - Level Stats Star
+  - Back Button
+  - Hamburger
+  - Menu Star
+  - Arrow
+  - Level Rect Fill
+  - emoji2 1
+  - Square
+  - Banner Button
+  - 9-Sliced
+  - Vibration Button
+  - emoji1
+  - Music Off Button
+  - Time Flat
+  - Half Circle
+  - Time
+  - Pack Button
+  - No Button
+  - Complete
+  - "Oyun Alan\u0131"
+  - Green Moves
+  - Plus Button
+  - Level Menu Border
+  - Ads Button
+  - Yes Button
+  - Tutorial Button
+  - Blue Moves
+  - Play Again
+  - Premium Button
+  - emoji2
+  - Empty Level Star
+  - Eye
+  m_RenderDataMap: {}
+  m_Tag: Atlas Game
+  m_IsVariant: 0

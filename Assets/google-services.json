@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "228176425647",
+    "project_id": "boompack-2c2be",
+    "storage_bucket": "boompack-2c2be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228176425647:android:7c2e2c19c9828336f61a5a",
+        "android_client_info": {
+          "package_name": "com.pulsar.boompack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228176425647-p9kvqj1tllaf87ftik6odu24pdsq73l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByqPQfe8yrUXEO0zWXp0yJk4IiwpwBGR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228176425647-p9kvqj1tllaf87ftik6odu24pdsq73l2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "228176425647-g89gge1114o2rgrbtg73vqn6e97fjlku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pulsar.boompack"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

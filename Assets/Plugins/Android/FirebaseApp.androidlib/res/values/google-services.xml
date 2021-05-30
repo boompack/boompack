@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="gcm_defaultSenderId" translatable="false">228176425647</string>
+  <string name="google_storage_bucket" translatable="false">boompack-2c2be.appspot.com</string>
+  <string name="project_id" translatable="false">boompack-2c2be</string>
+  <string name="google_api_key" translatable="false">AIzaSyByqPQfe8yrUXEO0zWXp0yJk4IiwpwBGR0</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyByqPQfe8yrUXEO0zWXp0yJk4IiwpwBGR0</string>
+  <string name="google_app_id" translatable="false">1:228176425647:android:7c2e2c19c9828336f61a5a</string>
+  <string name="default_web_client_id" translatable="false">228176425647-p9kvqj1tllaf87ftik6odu24pdsq73l2.apps.googleusercontent.com</string>
+</resources>

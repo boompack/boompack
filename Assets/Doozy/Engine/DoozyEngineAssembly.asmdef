@@ -1,0 +1,16 @@
+{
+    "name": "DoozyEngineAssembly",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7d46a43c03687de45b830c6a58fff077"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

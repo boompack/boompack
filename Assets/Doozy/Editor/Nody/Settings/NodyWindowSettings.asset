@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2219bf6f41194122bb8719d6ccb29f01, type: 3}
+  m_Name: NodyWindowSettings
+  m_EditorClassIdentifier: 
+  DotAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.5
+      outSlope: 1.5
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.2
+      outSlope: 0.2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  CurrentGraph: {fileID: 11400000, guid: 4a0fafe8a17c2f84c90b643e72938452, type: 2}
+  RecentlyOpenedGraphs:
+  - {fileID: 11400000, guid: 4a0fafe8a17c2f84c90b643e72938452, type: 2}
+  - {fileID: 0}
+  CopiedNodes:
+  - {fileID: -2217781580980542052, guid: 4a0fafe8a17c2f84c90b643e72938452, type: 2}
+  DeletedNodes:
+  - {fileID: 2549470490798292518, guid: 4a0fafe8a17c2f84c90b643e72938452, type: 2}
+  - {fileID: -4921155477530641517, guid: 4a0fafe8a17c2f84c90b643e72938452, type: 2}
+  - {fileID: -2163285460943478189, guid: 4a0fafe8a17c2f84c90b643e72938452, type: 2}
+  - {fileID: -946449207622598809, guid: 4a0fafe8a17c2f84c90b643e72938452, type: 2}
+  SelectedNodes: []
+  GraphTabs:
+  - IsRootTab: 1
+    Graph: {fileID: 11400000, guid: 4a0fafe8a17c2f84c90b643e72938452, type: 2}
+    SubGraphNode: {fileID: 0}
+    Zoom: 0.7
+    PanOffset: {x: 715.9488, y: 571.41943}
+    SelectedNodes: []
+    DeletedNodes: []
+  CurrentView: 1
+  CurrentPanOffset: {x: 90.5491, y: 618.44226}
+  DefaultPanOffset: {x: 0, y: 0}
+  IsDirty: 0
+  SaveCurrentGraphWithControlS: 1
+  CurrentDotAnimationSpeed: 0.6
+  CurrentZoom: 0.7
+  DefaultDotAnimationSpeed: 0.6
+  DefaultZoom: 1
+  ShowNodeNotes: 1

@@ -1,0 +1,51 @@
+fileFormatVersion: 2
+guid: c2b50e67e9757614d83a9a92f66f5af5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - StandartRedBalloon100: {fileID: 21300000, guid: 0b9be132cb3ff57488cc9aa16cc010bc, type: 3}
+  - StandartRedBalloon75: {fileID: 21300000, guid: 659e336bc8e9dc9439e90ecb0c4c5933, type: 3}
+  - StandartRedBalloon50: {fileID: 21300000, guid: f94f6b63379c7284eb86c8555979e013, type: 3}
+  - StandartRedBalloon25: {fileID: 21300000, guid: ff004ed010e9f074993ef23cb81e1774, type: 3}
+  - StandartRedBalloon0: {fileID: 21300000, guid: 20bd487f791208049b25f88871966f8c, type: 3}
+  - StandartYellowBalloon100: {fileID: 21300000, guid: 7d49222eda980904e97ab5f738f91210, type: 3}
+  - StandartYellowBalloon75: {fileID: 21300000, guid: 4685674c369f63a48807b8e4e3cb852e, type: 3}
+  - StandartYellowBalloon50: {fileID: 21300000, guid: 09f9717361b15d740841e0781ec6e51b, type: 3}
+  - StandartYellowBalloon25: {fileID: 21300000, guid: a87620c3e7e31b64c8c61c199561e353, type: 3}
+  - StandartYellowBalloon0: {fileID: 21300000, guid: bfbc62997797bda45aca459fb9665a12, type: 3}
+  - StandartGreenBalloon100: {fileID: 21300000, guid: 24d4e144b5f4a5c4c9c373cdc0fc1131, type: 3}
+  - StandartGreenBalloon75: {fileID: 21300000, guid: e81cbf861c29ff542aa4ea72e5e668a5, type: 3}
+  - StandartGreenBalloon50: {fileID: 21300000, guid: b60a3f4418b5b294a8587b4adbc61a13, type: 3}
+  - StandartGreenBalloon25: {fileID: 21300000, guid: 82a01d1ca08590d4c89a1f50016004f9, type: 3}
+  - StandartGreenBalloon0: {fileID: 21300000, guid: 2374666d44805df479b91b162ccac8de, type: 3}
+  - StandartBlueBalloon100: {fileID: 21300000, guid: d2294bc3044d2bc4c84ab530252c27c3, type: 3}
+  - StandartBlueBalloon75: {fileID: 21300000, guid: bd5115ab8eebeb24bb77553deeccd59d, type: 3}
+  - StandartBlueBalloon50: {fileID: 21300000, guid: 17907ec73c67fda468e41da8d836c5c5, type: 3}
+  - StandartBlueBalloon25: {fileID: 21300000, guid: b54594e5143375947909732dc925d48d, type: 3}
+  - StandartBlueBalloon0: {fileID: 21300000, guid: cb262b86310cfa3448fbe3df4025fed1, type: 3}
+  - DoubleBalloon200: {fileID: 21300000, guid: da58afe81092029479c7da4d7bc43798, type: 3}
+  - DoubleBalloon175: {fileID: 21300000, guid: c9b37b9e5c91dd84f89d57b16581dcde, type: 3}
+  - DoubleBalloon150: {fileID: 21300000, guid: 31ae2e7ef2e89244c865d18251fccd90, type: 3}
+  - DoubleBalloon125: {fileID: 21300000, guid: 2eda56441db93dc4c960e97d524da038, type: 3}
+  - DoubleBalloon100: {fileID: 21300000, guid: 00c9c9c48b86818408463d551e18ba5f, type: 3}
+  - DoubleBalloon75: {fileID: 21300000, guid: 6143e5cd4c149fc459d935f8b4f886e6, type: 3}
+  - DoubleBalloon50: {fileID: 21300000, guid: 4a72f4d96d9ee1b4682e567827e863e8, type: 3}
+  - DoubleBalloon25: {fileID: 21300000, guid: ae971bb200832e146b1988e7ea47fd61, type: 3}
+  - DoubleBalloon0: {fileID: 21300000, guid: 5705b007981b95b42852cbe048d03cef, type: 3}
+  - ReflectiveBalloon100: {fileID: 21300000, guid: 624b9ad0d7a57444b96c394228cabf4b, type: 3}
+  - ReflectiveBalloon75: {fileID: 21300000, guid: 2da1fa9cd3706a34d84030c266ca907c, type: 3}
+  - ReflectiveBalloon50: {fileID: 21300000, guid: 322f0ae542a3a2a4b8b8d30352070776, type: 3}
+  - ReflectiveBalloon25: {fileID: 21300000, guid: 93dcba26c708aff448ad903d6899a9a4, type: 3}
+  - ReflectiveBalloon0: {fileID: 21300000, guid: 050b9df09aa122d4794f62ba80cb53bf, type: 3}
+  - DonttouchBalloon100: {fileID: 21300000, guid: ee336322639bf4742af686897741b577, type: 3}
+  - DonttouchBalloon75: {fileID: 21300000, guid: a9d789ca8926a764b89bd9adbf29eec3, type: 3}
+  - DonttouchBalloon50: {fileID: 21300000, guid: 1ae15a31fb6ff0647a49643178c75deb, type: 3}
+  - DonttouchBalloon25: {fileID: 21300000, guid: e2eac1d5b53ae434082cb0effa74a256, type: 3}
+  - DonttouchBalloon0: {fileID: 21300000, guid: 112a297d3c169a84f840a8a8a5409841, type: 3}
+  - StandartBalloon0: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
