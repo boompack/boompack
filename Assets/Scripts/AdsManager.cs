@@ -82,7 +82,7 @@ public class AdsManager : Singleton<AdsManager>
 
     public void ShowInterstitialAd(int i)
     {
-        if(i==interstitialCounter-1)
+        if(i>0 && (i+1)%interstitialCounter==0)
         {
             if (MaxSdk.IsInterstitialReady(interstitialAdUnitId))
             {
@@ -210,6 +210,14 @@ public class AdsManager : Singleton<AdsManager>
         UIManager.Instance.rewardAdZone.SetActive(false);
         //DoozyManager.Instance.SendGameEvent("OpenedReward");
 
+        if (GameManager.Instance.levelLoader.loadedLevel.levelID == 300)
+        {
+            DoozyManager.Instance.SendGameEvent("LastGame");
+        }
+        else if ((GameManager.Instance.levelLoader.loadedLevel.levelID % 20) == 0)
+        {
+            DoozyManager.Instance.SendGameEvent("LastEpisode");
+        }
     }
     #endregion
 }

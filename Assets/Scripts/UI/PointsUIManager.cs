@@ -32,9 +32,9 @@ public class PointsUIManager : Singleton<PointsUIManager>
         puanTextW.DOColor(new Color (0.6196079f, 0.282353f, 0.8431373f, 1f ), 4).From(Color.clear);
 
 
-        bonusPointTextW.text = bonusUseCount.ToString();
+        bonusPointTextW.text = (-500 * bonusUseCount).ToString();
         bonusPointTextW.DOColor(new Color (0.6196079f, 0.282353f, 0.8431373f, 1f ), 4).From(Color.clear);
-        timePointTextW.text = "1000";
+        timePointTextW.text =time>0? "1000":"0";
         timePointTextW.DOColor(new Color (0.6196079f, 0.282353f, 0.8431373f, 1f ), 5).From(Color.clear);
         repeatPointTextW.text = repeatCount==0 ? (250*repeatCount).ToString() : "-" + (250 * repeatCount).ToString();
         repeatPointTextW.DOColor(new Color (0.6196079f, 0.282353f, 0.8431373f, 1f ), 6).From(Color.clear);

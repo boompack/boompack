@@ -34,9 +34,10 @@ public class WinScreenManager : Singleton<WinScreenManager>
 
     }
 
-    public void SetGraphics(int bonusCount, int repeatCount)
+    public void SetGraphics(int bonusCount, int repeatCount, int timeCount)
     {
-        if(bonusCount != 0 && repeatCount != 0)
+        Debug.Log("timecount" + timeCount);
+        if(bonusCount != 0)
         {
             //star1.sprite = fullStar;
             //star2.sprite = emptyStar;
@@ -49,21 +50,9 @@ public class WinScreenManager : Singleton<WinScreenManager>
             congratsText.text = "Good!";
         }
 
-        else if (repeatCount != 0)
-        {
-            //star1.sprite = fullStar;
-            //star2.sprite = fullStar;
-            //star3.sprite = emptyStar;
+        
 
-            filledStar2.SetActive(true);
-
-
-            emoji.sprite = emoji2;
-
-            congratsText.text = "Perfect!";
-        }
-
-        else
+        else if(repeatCount == 0 && timeCount > 0)
         {
             //star1.sprite = fullStar;
             //star2.sprite = fullStar;
@@ -75,6 +64,21 @@ public class WinScreenManager : Singleton<WinScreenManager>
 
             congratsText.text = "Excellent!";
 
+        }
+
+        //else if (repeatCount != 0 || timeCount! > 0)
+        else
+        {
+            //star1.sprite = fullStar;
+            //star2.sprite = fullStar;
+            //star3.sprite = emptyStar;
+
+            filledStar2.SetActive(true);
+
+
+            emoji.sprite = emoji2;
+
+            congratsText.text = "Perfect!";
         }
     }
 }

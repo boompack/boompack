@@ -24,44 +24,56 @@ public class BonusBalloonItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
-        canvasGroup.alpha = 0.6f;
-        canvasGroup.blocksRaycasts = false;
-        turnOffLayerMask("UI");
-        turnOffLayerMask("Balloon");
-        yer = rectTransform.anchoredPosition;
-        Debug.Log("Drag Baþladý...");
-        drag = true;
+        if (GameManager.Instance.isBonusesUseble)
+        {
+            Debug.Log(GameManager.Instance.isBonusesUseble);
+            canvasGroup.alpha = 0.6f;
+            canvasGroup.blocksRaycasts = false;
+            turnOffLayerMask("UI");
+            turnOffLayerMask("Balloon");
+            yer = rectTransform.anchoredPosition;
+            Debug.Log("Drag Baþladý...");
+            drag = true;
+
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if (GameManager.Instance.isBonusesUseble)
+        {
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
-        turnOnLayerMask("UI");
-        turnOnLayerMask("Balloon");
-        rectTransform.anchoredPosition = yer;
-        Debug.Log("Drag Bitti...");
-        drag = false;
-
-        if (eventData != null)
+        if (GameManager.Instance.isBonusesUseble)
         {
-            PointerEventData pointerData = new PointerEventData(EventSystem.current) { pointerId = -1, };
-            pointerData.position = eventData.position;
-            List<RaycastResult> results = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(pointerData, results);
-            foreach (RaycastResult result in results)
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+            turnOnLayerMask("UI");
+            turnOnLayerMask("Balloon");
+            rectTransform.anchoredPosition = yer;
+            Debug.Log("Drag Bitti...");
+            drag = false;
+
+            if (eventData != null)
             {
-                if (result.gameObject.tag.Equals("Block"))
+                PointerEventData pointerData = new PointerEventData(EventSystem.current) { pointerId = -1, };
+                pointerData.position = eventData.position;
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointerData, results);
+                foreach (RaycastResult result in results)
                 {
-                    result.gameObject.GetComponent<Block>().OnDropRaycast(this.gameObject);
+                    if (result.gameObject.tag.Equals("Block"))
+                    {
+                        result.gameObject.GetComponent<Block>().OnDropRaycast(this.gameObject);
+                    }
                 }
             }
+
         }
     }
     public void turnOffLayerMask(string layerMaskName)
@@ -76,7 +88,10 @@ public class BonusBalloonItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     }
     public void YerineDon()
     {
-        rectTransform.anchoredPosition = yer;
+        if (!drag && GameManager.Instance.isBonusesUseble)
+        {
+            rectTransform.anchoredPosition = yer;
+        }
     }
     //OnPointerDown is also required to receive OnPointerUp callbacks
     public void OnPointerDown(PointerEventData eventData)
@@ -88,7 +103,7 @@ public class BonusBalloonItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
     public void OnPointerUp(PointerEventData eventData)
     {
         Debug.Log("The mouse click was released");
-        if(!drag)
+        if(!drag && GameManager.Instance.isBonusesUseble)
         {
             UIManager.Instance.hand.GetComponent<Animator>().SetTrigger("BonusTutorialTrigger");
             PlayerPrefs.GetString("BonusBallTutorial", "False");
@@ -97,11 +112,13 @@ public class BonusBalloonItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
 
     void OnDisable()
     {
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
-        turnOnLayerMask("UI");
-        turnOnLayerMask("Balloon");
-        rectTransform.anchoredPosition = yer;
+
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+            turnOnLayerMask("UI");
+            turnOnLayerMask("Balloon");
+            rectTransform.anchoredPosition = yer;
+
     }
 
 }

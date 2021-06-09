@@ -82,17 +82,42 @@ public abstract class Balloon : MonoBehaviour
     */
     public virtual void TouchBalloon()
     {
-        if (balloonState == BalloonState.Active)
+        if (balloonState == BalloonState.Active && GameManager.Instance.balloonUseable)
         {
             GameManager.Instance.poppedBalloonCountThisRound = 1;
             Debug.Log("Balon Patlatıldı");
+            StartCoroutine(SetBallonUseable(1));
+            StartCoroutine(SetBonusUseable(2));
             PopBalloon();
-
         }
         else
         {
             Debug.Log("Balon Aktif Olmadığı İçin Patlatılamıyor.");
         }
+    }
+
+    IEnumerator SetBonusUseable(int i)
+    {
+        GameManager.Instance.isBonusesUseble = false;
+        Debug.Log("Bonus Kullanılamaz");
+
+        yield return new WaitForSeconds(i);
+        GameManager.Instance.isBonusesUseble = true;
+        Debug.Log("Bonus Kullanılabilir");
+
+
+    }
+
+    IEnumerator SetBallonUseable(int i)
+    {
+        GameManager.Instance.balloonUseable = false;
+        Debug.Log("Balon Kullanılamaz");
+
+        yield return new WaitForSeconds(i);
+        GameManager.Instance.balloonUseable = true;
+        Debug.Log("Balon Kullanılabilir");
+
+
     }
 
     public async virtual void GetEffect(Wave wave, Balloon effector, int randomTime)
@@ -231,5 +256,6 @@ public enum BalloonState : byte
 {
     Active,
     Popped,
-    Dead
+    Dead,
+    InActive
 }

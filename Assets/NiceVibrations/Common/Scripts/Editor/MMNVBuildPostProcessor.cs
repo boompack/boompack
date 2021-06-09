@@ -135,7 +135,7 @@ namespace MoreMountains.NiceVibrations
         private static void WritePropertiesToProject(PBXProject pbxProject, string targetGUID, string pbxProjectPath, string pluginPath, bool forceAlwaysEmbedSwiftStandardLibraries)
         {
             pbxProject.AddFrameworkToProject(targetGUID, "CoreHaptics.framework", false);
-            pbxProject.AddBuildProperty(targetGUID, "SWIFT_VERSION", "5.1");
+            pbxProject.SetBuildProperty(targetGUID, "SWIFT_VERSION", "5.1");
             pbxProject.SetBuildProperty(targetGUID, "ENABLE_BITCODE", "NO");
             pbxProject.SetBuildProperty(targetGUID, "SWIFT_OBJC_BRIDGING_HEADER", pluginPath + "UnitySwift-Bridging-Header.h");
             pbxProject.SetBuildProperty(targetGUID, "SWIFT_OBJC_INTERFACE_HEADER_NAME", "unityswift-Swift.h");
@@ -183,7 +183,7 @@ namespace MoreMountains.NiceVibrations
             Debug.Log("[MMNVBuildPostProcessor] Adding properties to XCode framework, module path : " + module_map_filepath);
 
             pbxProject.AddFrameworkToProject(targetGUID, "CoreHaptics.framework", false);
-            pbxProject.AddBuildProperty(targetGUID, "SWIFT_VERSION", "5.1");
+            pbxProject.SetBuildProperty(targetGUID, "SWIFT_VERSION", "5.1");
             pbxProject.SetBuildProperty(targetGUID, "ENABLE_BITCODE", "NO");
             if (forceAlwaysEmbedSwiftStandardLibraries)
             {

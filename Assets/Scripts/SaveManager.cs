@@ -151,7 +151,7 @@ public class SaveManager : Singleton<SaveManager>
     }
 
 
-    public void SaveLevelStat(int levelID, int point, int bonusUseCount, int repeatCount)
+    public void SaveLevelStat(int levelID, int point, int bonusUseCount, int repeatCount,int timeCount)
     {
         levelStats.levelStatsDict[levelID].isLocked = false;
         levelStats.levelStatsDict[levelID].isPlayable = true;
@@ -163,12 +163,12 @@ public class SaveManager : Singleton<SaveManager>
         {
             newLevelStar = 1;
         }
-        else if (repeatCount != 0)
-        {
-            newLevelStar = 2;
-        } else
+        else if (repeatCount == 0 && timeCount > 0)
         {
             newLevelStar = 3;
+        } else
+        {
+            newLevelStar = 2;
         }
 
         if(levelStats.levelStatsDict[levelID].maxPoint < point)

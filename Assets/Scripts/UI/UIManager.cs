@@ -22,6 +22,8 @@ public class UIManager : Singleton<UIManager>
     public GameObject rewardAdZone;
 
     public Image hand;
+    public LevelStatsObject levelStats = new LevelStatsObject();
+
     public void ShowHealthTexts()
     {
         foreach (var item in GameManager.Instance.balloonsList)
@@ -50,8 +52,10 @@ public class UIManager : Singleton<UIManager>
 
         foreach (RewardedZones rewardedZones in AdsManager.Instance.rewardedZones)
         {
-            if (LevelManager.Instance.playedLevel.levelID == rewardedZones.startLevel)
+            if (LevelManager.Instance.playedLevel.levelID == rewardedZones.startLevel && SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID+2].isLocked == true)
             {
+                //Debug.Log(SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID + 1]);
+                //Debug.Log(SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID + 1].isLocked);
                 AdsManager.Instance.numberOfSectionsToOpen = rewardedZones.numberOfSectionsToOpen;
                 AdsManager.Instance.startLevel = rewardedZones.startLevel;
                 rewardedPanelMessage.text = "Watch an ad to enable the next " + AdsManager.Instance.numberOfSectionsToOpen + " levels.";
@@ -66,8 +70,19 @@ public class UIManager : Singleton<UIManager>
         GameManager.Instance.LoadNextLevel();
     }
 
-    public void UpdateLevelText(int levelID)
+    public void DirectNextLevelButton()
+    {
+        GameManager.Instance.LoadNextLevel();
+
+    }
+
+public void UpdateLevelText(int levelID)
     {
         levelText.text = levelID.ToString();
+    }
+
+    public void SendFeedback()
+    {
+        Application.OpenURL ("mailto:" + "boompack.game@gmail.com" + " ? subject=" + "Boom Pack Feedback");
     }
 }

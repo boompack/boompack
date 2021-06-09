@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     public bool isBonusBalloonCreatedThisRound = false;
 
     public bool isBonusesOpen = true;
+    public bool isBonusesUseble = true;
 
     public int bonusBalloon1Count;
     public int bonusBalloon2Count;
@@ -103,7 +104,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject bonusBalloon24;
     public GameObject bonusBalloon25;
 
-
+    public bool balloonUseable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -673,9 +674,17 @@ public class GameManager : Singleton<GameManager>
             PointsManager.Instance.CalculatePoints(Mathf.RoundToInt(timeLeft), RepeatManager.Instance.repeatCount, bonusUseCount, true);
             AnimateStars();
             GameEndScreens(true);
-            SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID+1].isLocked = false;
-            SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID+1].isPlayable = true;
             isPaused = true;           
+            foreach (RewardedZones rewardedZones in AdsManager.Instance.rewardedZones)
+            {
+                if (levelLoader.loadedLevel.levelID == rewardedZones.startLevel)
+                {
+                    return;
+                }
+
+            }
+            SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isLocked = false;
+            SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isPlayable = true;
         }
         else
         {
@@ -735,9 +744,11 @@ public class GameManager : Singleton<GameManager>
             //    PlayerPrefs.SetInt("LevelHighScore" + (levelLoader.loadedLevel.levelID - 1), PointsManager.Instance.point);
             //    HighScoreManager.Instance.highscores[levelLoader.loadedLevel.levelID - 1] = PlayerPrefs.GetInt("LevelHighScore" + (levelLoader.loadedLevel.levelID - 1));
             //}
-            SaveManager.Instance.SaveLevelStat(levelLoader.loadedLevel.levelID, PointsManager.Instance.point, bonusUseCount, RepeatManager.Instance.repeatCount);
-            WinScreenManager.Instance.SetGraphics(bonusUseCount, RepeatManager.Instance.repeatCount);
-            CheckEndEpisode();
+            SaveManager.Instance.SaveLevelStat(levelLoader.loadedLevel.levelID, PointsManager.Instance.point, bonusUseCount, RepeatManager.Instance.repeatCount, Mathf.RoundToInt(timeLeft));
+            WinScreenManager.Instance.SetGraphics(bonusUseCount, RepeatManager.Instance.repeatCount, Mathf.RoundToInt(timeLeft));
+            //CheckEndEpisode();
+            DoozyManager.Instance.SendGameEvent("WinGame");
+
         }
         else
         {

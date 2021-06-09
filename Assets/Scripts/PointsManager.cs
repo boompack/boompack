@@ -35,6 +35,11 @@ public class PointsManager : Singleton<PointsManager>
                 PointsUIManager.Instance.UpdatePointsWin(point, time, repeatCount, totalPoint, bonusUseCount);
 
             }
+            else
+            {
+                PointsUIManager.Instance.UpdatePointsWin(point, time, repeatCount, totalPoint, bonusUseCount);
+
+            }
 
             //PointsUIManager.Instance.UpdatePointsWin(point, time, repeatCount, totalPoint, bonusUseCount);
         }
