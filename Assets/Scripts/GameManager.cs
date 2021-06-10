@@ -6,6 +6,7 @@ using Doozy.Engine;
 using System.Diagnostics;
 using DG.Tweening;
 using System.Threading.Tasks;
+using GameAnalyticsSDK;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -748,10 +749,13 @@ public class GameManager : Singleton<GameManager>
             WinScreenManager.Instance.SetGraphics(bonusUseCount, RepeatManager.Instance.repeatCount, Mathf.RoundToInt(timeLeft));
             //CheckEndEpisode();
             DoozyManager.Instance.SendGameEvent("WinGame");
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, Yardimcilar.GetLevelState(levelLoader.loadedLevel.levelID).ToString(), levelLoader.loadedLevel.levelID.ToString(), PointsManager.Instance.point);
 
         }
         else
         {
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, Yardimcilar.GetLevelState(levelLoader.loadedLevel.levelID).ToString(), levelLoader.loadedLevel.levelID.ToString(), PointsManager.Instance.point);
+
             DoozyManager.Instance.SendGameEvent("LoseGame");
             AdsManager.Instance.ShowInterstitialAd(RepeatManager.Instance.repeatCount);
         }

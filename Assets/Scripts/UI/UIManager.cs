@@ -83,6 +83,6 @@ public void UpdateLevelText(int levelID)
 
     public void SendFeedback()
     {
-        Application.OpenURL ("mailto:" + "boompack.game@gmail.com" + " ? subject=" + "Boom Pack Feedback");
+        Application.OpenURL ("mailto:" + "boompack.game@gmail.com" + "?subject=" + "Boom Pack Feedback");
     }
 }

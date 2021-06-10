@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using GameAnalyticsSDK;
 using MessagePack;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -66,6 +67,7 @@ public class LevelManager : Singleton<LevelManager>
         //TODO
         playedLevel = levelsDictionary[levelID];
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, Yardimcilar.GetLevelState(levelID).ToString(), levelID.ToString());
     }
 
     public void LevelsToDictionary()

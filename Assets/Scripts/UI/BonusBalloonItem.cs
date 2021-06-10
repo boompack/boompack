@@ -70,6 +70,7 @@ public class BonusBalloonItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
                     if (result.gameObject.tag.Equals("Block"))
                     {
                         result.gameObject.GetComponent<Block>().OnDropRaycast(this.gameObject);
+                        PlayerPrefs.SetInt("BonusBalloon1Count", PlayerPrefs.GetInt("BonusBalloon1Count")-1);
                     }
                 }
             }

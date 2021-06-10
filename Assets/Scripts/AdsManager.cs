@@ -1,3 +1,4 @@
+using GameAnalyticsSDK;
 using MessagePack;
 using System;
 using System.Collections;
@@ -31,10 +32,12 @@ public class AdsManager : Singleton<AdsManager>
 
     #region Rewarded Variables
 #if UNITY_IOS
-            string rewardedAdUnitId = "1797cffd801ab211";
+            string rewardedOpenLevelsAdUnitId = "1797cffd801ab211";
+            string rewardedBonusBallsAdUnitId = "f45ec4c3bfbdac91";
             int rewardedRetryAttempt;
 #elif UNITY_ANDROID
-    string rewardedAdUnitId = "96f8577e41d141f5";
+    string rewardedOpenLevelsAdUnitId = "96f8577e41d141f5";
+    string rewardedBonusBallsAdUnitId = "b6daed938a421669";
             int rewardedRetryAttempt;
         #endif
     #endregion
@@ -61,7 +64,7 @@ public class AdsManager : Singleton<AdsManager>
         
     }
 
-    public void ShowRewardedAd(int currentLevel)
+    public void ShowOpenLevelsRewardedAd(int currentLevel)
     {
         ////var level=0;
         //foreach (RewardedZones rewardedZones in rewardedZones)
@@ -69,14 +72,27 @@ public class AdsManager : Singleton<AdsManager>
         //    if (currentLevel == rewardedZones.startLevel)
         //    {
                 //numberOfSectionsToOpen = rewardedZones.numberOfSectionsToOpen;
-                if (MaxSdk.IsRewardedAdReady(rewardedAdUnitId))
+                if (MaxSdk.IsRewardedAdReady(rewardedOpenLevelsAdUnitId))
                 {
-                    MaxSdk.ShowRewardedAd(rewardedAdUnitId);
+            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "MAX", "OpenLevels");
+
+            MaxSdk.ShowRewardedAd(rewardedOpenLevelsAdUnitId);
                 }
         //    }
         //}
 
 
+    }
+
+    public void ShowBonusBallsRewardedAd()
+    {
+
+        if (MaxSdk.IsRewardedAdReady(rewardedBonusBallsAdUnitId))
+        {
+
+                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "MAX", "BonusBall");
+            MaxSdk.ShowRewardedAd(rewardedBonusBallsAdUnitId);
+        }
 
     }
 
@@ -86,6 +102,8 @@ public class AdsManager : Singleton<AdsManager>
         {
             if (MaxSdk.IsInterstitialReady(interstitialAdUnitId))
             {
+                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.Interstitial, "MAX", "Interstitial");
+
                 MaxSdk.ShowInterstitial(interstitialAdUnitId);
             }
 
@@ -125,6 +143,8 @@ public class AdsManager : Singleton<AdsManager>
             // Interstitial ad failed to load 
             // AppLovin recommends that you retry with exponentially higher delays, up to a maximum delay (in this case 64 seconds)
 
+            GameAnalytics.NewAdEvent(GAAdAction.FailedShow, GAAdType.Interstitial, "MAX", "Interstitial");
+
             interstitialRetryAttempt++;
             double retryDelay = Math.Pow(2, Math.Min(6, interstitialRetryAttempt));
 
@@ -157,16 +177,22 @@ public class AdsManager : Singleton<AdsManager>
             MaxSdkCallbacks.OnRewardedAdHiddenEvent += OnRewardedAdDismissedEvent;
             MaxSdkCallbacks.OnRewardedAdReceivedRewardEvent += OnRewardedAdReceivedRewardEvent;
 
-            // Load the first rewarded ad
-            LoadRewardedAd();
+        // Load the first rewarded ad
+        LoadBonusBallsRewardedAd();
+        LoadOpenLevelsRewardedAd();
         }
 
-        private void LoadRewardedAd()
+        private void LoadOpenLevelsRewardedAd()
         {
-            MaxSdk.LoadRewardedAd(rewardedAdUnitId);
+            MaxSdk.LoadRewardedAd(rewardedOpenLevelsAdUnitId);
         }
 
-        private void OnRewardedAdLoadedEvent(string adUnitId)
+    private void LoadBonusBallsRewardedAd()
+    {
+        MaxSdk.LoadRewardedAd(rewardedBonusBallsAdUnitId);
+    }
+
+    private void OnRewardedAdLoadedEvent(string adUnitId)
         {
             // Rewarded ad is ready for you to show. MaxSdk.IsRewardedAdReady(adUnitId) now returns 'true'.
 
@@ -187,36 +213,67 @@ public class AdsManager : Singleton<AdsManager>
 
         private void OnRewardedAdFailedToDisplayEvent(string adUnitId, int errorCode)
         {
-            // Rewarded ad failed to display. AppLovin recommends that you load the next ad.
-            LoadRewardedAd();
+        // Rewarded ad failed to display. AppLovin recommends that you load the next ad.
+        //if (adUnitId == rewardedOpenLevelsAdUnitId)
+        //{
+        //    GameAnalytics.NewAdEvent(GAAdAction.FailedShow, GAAdType.RewardedVideo, "MAX", "OpenLevels");
+        //}
+        LoadOpenLevelsRewardedAd();
+        LoadBonusBallsRewardedAd();
         }
 
-        private void OnRewardedAdDisplayedEvent(string adUnitId) { }
+        private void OnRewardedAdDisplayedEvent(string adUnitId) 
+        {
+            //if (adUnitId == rewardedOpenLevelsAdUnitId)
+            //{
+            //    GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "MAX", "OpenLevels");
+            //}
+        }
 
         private void OnRewardedAdClickedEvent(string adUnitId) { }
 
         private void OnRewardedAdDismissedEvent(string adUnitId)
         {
-            // Rewarded ad is hidden. Pre-load the next ad
-            LoadRewardedAd();
-        }
+        // Rewarded ad is hidden. Pre-load the next ad
+        LoadOpenLevelsRewardedAd();
+        LoadBonusBallsRewardedAd();
 
-        private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward)
-        {
-        Debug.Log("ödül verildi");
-            SaveManager.Instance.OpenRewardedLevels();
-        UIManager.Instance.rewardedPanelMessage.text = "Your next " + AdsManager.Instance.numberOfSectionsToOpen + " levels have been unlocked.";
-        UIManager.Instance.rewardedButtonMessage.text = "Levels Screen";
-        UIManager.Instance.rewardAdZone.SetActive(false);
-        //DoozyManager.Instance.SendGameEvent("OpenedReward");
+    }
 
-        if (GameManager.Instance.levelLoader.loadedLevel.levelID == 300)
+    private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward)
         {
-            DoozyManager.Instance.SendGameEvent("LastGame");
-        }
-        else if ((GameManager.Instance.levelLoader.loadedLevel.levelID % 20) == 0)
-        {
-            DoozyManager.Instance.SendGameEvent("LastEpisode");
+
+            if(adUnitId==rewardedOpenLevelsAdUnitId)
+            {
+                GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "OpenLevels");
+
+                SaveManager.Instance.OpenRewardedLevels();
+                UIManager.Instance.rewardedPanelMessage.text = "Your next " + AdsManager.Instance.numberOfSectionsToOpen + " levels have been unlocked.";
+                UIManager.Instance.rewardedButtonMessage.text = "Levels Screen";
+                UIManager.Instance.rewardAdZone.SetActive(false);
+                //DoozyManager.Instance.SendGameEvent("OpenedReward");
+
+                if (GameManager.Instance.levelLoader.loadedLevel.levelID == 300)
+                {
+                    DoozyManager.Instance.SendGameEvent("LastGame");
+                }
+                else if ((GameManager.Instance.levelLoader.loadedLevel.levelID % 20) == 0)
+                {
+                    DoozyManager.Instance.SendGameEvent("LastEpisode");
+                }
+
+            }
+            else if (adUnitId==rewardedBonusBallsAdUnitId)
+            {
+                GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "BonusBall");
+                Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));
+                PlayerPrefs.SetInt("BonusBalloon1Count", PlayerPrefs.GetInt("BonusBalloon1Count") + 1);
+                GameManager.Instance.bonusBalloon1Count = PlayerPrefs.GetInt("BonusBalloon1Count");
+
+            Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));
+                PlayerPrefs.Save();
+            BonusBalloonUIManager.Instance.RefleshCounts();
+
         }
     }
     #endregion

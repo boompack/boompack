@@ -7,7 +7,15 @@ public class BonusBalloonManager : Singleton<BonusBalloonManager>
 
     public void Start()
     {
-        ResetBalloons();
+        //ResetBalloons();
+        if (!PlayerPrefs.HasKey("BonusBalloon1Count"))
+        {
+            PlayerPrefs.SetInt("BonusBalloon1Count", 5);
+        }
+
+        GameManager.Instance.bonusBalloon1Count = PlayerPrefs.GetInt("BonusBalloon1Count");
+        BonusBalloonUIManager.Instance.RefleshCounts();
+
     }
     public void ResetBalloons()
     {
