@@ -15,7 +15,7 @@ public class SaveManager : Singleton<SaveManager>
     {
         //CreateFirstTime();
         LoadLevelStats();
-
+        IAPManager.Instance.CheckPremium();
     }
 
     public void CreateFirstTime()

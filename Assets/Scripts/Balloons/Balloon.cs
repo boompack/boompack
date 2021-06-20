@@ -86,7 +86,7 @@ public abstract class Balloon : MonoBehaviour
         {
             GameManager.Instance.poppedBalloonCountThisRound = 1;
             Debug.Log("Balon Patlatıldı");
-            StartCoroutine(SetBallonUseable(1));
+            StartCoroutine(SetBallonUseable(0.5f));
             StartCoroutine(SetBonusUseable(2));
             PopBalloon();
         }
@@ -108,7 +108,7 @@ public abstract class Balloon : MonoBehaviour
 
     }
 
-    IEnumerator SetBallonUseable(int i)
+    IEnumerator SetBallonUseable(float i)
     {
         GameManager.Instance.balloonUseable = false;
         Debug.Log("Balon Kullanılamaz");

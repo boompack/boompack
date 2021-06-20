@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,12 @@ public class WinScreenManager : Singleton<WinScreenManager>
     public GameObject filledStar2;
     public GameObject filledStar3;
 
+    public Text NextLevelText;
+
+    //private void OnEnable()
+    //{
+    //    NextLevelText.text= GameManager.Instance.levelLoader.loadedLevel.levelID != 300 ? "Next Level" : "Next";
+    //}
 
     private void OnDisable()
     {

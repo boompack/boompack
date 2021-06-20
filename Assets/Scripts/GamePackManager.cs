@@ -66,11 +66,29 @@ public class GamePackManager : Singleton<GamePackManager>
 
     public void AnimateLastLevel()
     {
-        gameButtonDict[(SaveManager.Instance.levelStats.lastPlayedLevel + 1)].border.DOColor( Color.cyan, 0.5f).SetLoops(20, LoopType.Yoyo);
+        if (SaveManager.Instance.levelStats.levelStatsDict[300].isPlayable != true)
+        {
+            gameButtonDict[(SaveManager.Instance.levelStats.lastPlayedLevel + 1)].border.DOColor(Color.cyan, 0.5f)
+                .SetLoops(20, LoopType.Yoyo);
+        }
+        else
+        {
+            gameButtonDict[(SaveManager.Instance.levelStats.lastPlayedLevel)].border.DOColor(Color.cyan, 0.5f)
+                .SetLoops(20, LoopType.Yoyo);
+        }
     }
 
     public void StopLastLevelAnimation()
     {
-        gameButtonDict[(SaveManager.Instance.levelStats.lastPlayedLevel + 1)].border.DOKill();
+        if (SaveManager.Instance.levelStats.levelStatsDict[300].isPlayable != true)
+        {
+            gameButtonDict[(SaveManager.Instance.levelStats.lastPlayedLevel + 1)].border.DOKill();
+
+        }
+        else
+        {
+            gameButtonDict[(SaveManager.Instance.levelStats.lastPlayedLevel)].border.DOKill();
+
+        }
     }
 }

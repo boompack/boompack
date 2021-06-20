@@ -50,24 +50,54 @@ public class UIManager : Singleton<UIManager>
         //GameManager.Instance.LoadNextLevel();
         //UnityEngine.Debug.Log(LevelManager.Instance.playedLevel.levelID);
 
-        foreach (RewardedZones rewardedZones in AdsManager.Instance.rewardedZones)
+        if (GameManager.Instance.levelLoader.loadedLevel.levelID != 300)
         {
-            if (LevelManager.Instance.playedLevel.levelID == rewardedZones.startLevel && SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID+2].isLocked == true)
+            foreach (RewardedZones rewardedZones in AdsManager.Instance.rewardedZones)
             {
-                //Debug.Log(SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID + 1]);
-                //Debug.Log(SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID + 1].isLocked);
-                AdsManager.Instance.numberOfSectionsToOpen = rewardedZones.numberOfSectionsToOpen;
-                AdsManager.Instance.startLevel = rewardedZones.startLevel;
-                rewardedPanelMessage.text = "Watch an ad to enable the next " + AdsManager.Instance.numberOfSectionsToOpen + " levels.";
-                rewardedButtonMessage.text = "Main Menu";
-                rewardAdZone.SetActive(true);
-                DoozyManager.Instance.SendGameEvent("OpenLockScreen");
-                return;
+                if (LevelManager.Instance.playedLevel.levelID == rewardedZones.startLevel && SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID + 2].isLocked == true)
+                {
+                    //Debug.Log(SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID + 1]);
+                    //Debug.Log(SaveManager.Instance.levelStats.levelStatsDict[GameManager.Instance.levelLoader.loadedLevel.levelID + 1].isLocked);
+                    AdsManager.Instance.numberOfSectionsToOpen = rewardedZones.numberOfSectionsToOpen;
+                    AdsManager.Instance.startLevel = rewardedZones.startLevel;
+                    rewardedPanelMessage.text = "Watch an ad to enable the next " + AdsManager.Instance.numberOfSectionsToOpen + " levels.";
+                    rewardedButtonMessage.text = "Main Menu";
+                    rewardAdZone.SetActive(true);
+                    DoozyManager.Instance.SendGameEvent("OpenLockScreen");
+                    return;
+                }
+
             }
 
         }
+        else
+        {
+            DoozyManager.Instance.SendGameEvent("LastGame");
 
-        GameManager.Instance.LoadNextLevel();
+        }
+
+
+        if (PlayerPrefs.GetInt("PREMIUM") == 1)
+        {
+            GameManager.Instance.LoadNextLevel();
+        }
+        else
+        {
+            if (GameManager.Instance.levelLoader.loadedLevel.levelID == 240)
+            {
+                GameManager.Instance.SavePrefs();
+                GameManager.Instance.StopAllCoroutines();
+                GameManager.Instance.DestroyGameScene();
+                DoozyManager.Instance.SendGameEvent("UpgrageMessage");
+
+            }
+            else
+            {
+                GameManager.Instance.LoadNextLevel();
+
+            }
+        }
+        
     }
 
     public void DirectNextLevelButton()

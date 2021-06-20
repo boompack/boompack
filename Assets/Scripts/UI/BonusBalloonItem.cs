@@ -1,3 +1,4 @@
+using GameAnalyticsSDK;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,6 +72,7 @@ public class BonusBalloonItem : MonoBehaviour, IPointerDownHandler, IBeginDragHa
                     {
                         result.gameObject.GetComponent<Block>().OnDropRaycast(this.gameObject);
                         PlayerPrefs.SetInt("BonusBalloon1Count", PlayerPrefs.GetInt("BonusBalloon1Count")-1);
+                        GameAnalytics.NewDesignEvent("Used Bonus Ball", GameManager.Instance.levelLoader.loadedLevel.levelID);
                     }
                 }
             }

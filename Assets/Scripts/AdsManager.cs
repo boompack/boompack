@@ -98,7 +98,7 @@ public class AdsManager : Singleton<AdsManager>
 
     public void ShowInterstitialAd(int i)
     {
-        if(i>0 && (i+1)%interstitialCounter==0)
+        if(i>0 && (i+1)%interstitialCounter==0 && PlayerPrefs.GetInt("PREMIUM") != 1)
         {
             if (MaxSdk.IsInterstitialReady(interstitialAdUnitId))
             {
@@ -245,10 +245,14 @@ public class AdsManager : Singleton<AdsManager>
 
             if(adUnitId==rewardedOpenLevelsAdUnitId)
             {
-                GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "OpenLevels");
 
                 SaveManager.Instance.OpenRewardedLevels();
-                UIManager.Instance.rewardedPanelMessage.text = "Your next " + AdsManager.Instance.numberOfSectionsToOpen + " levels have been unlocked.";
+                SaveManager.Instance.SaveLevelStats();
+                PlayerPrefs.Save();
+                GameManager.Instance.SavePrefs();
+                SaveManager.Instance.LoadLevelStats();
+
+            UIManager.Instance.rewardedPanelMessage.text = "Your next " + AdsManager.Instance.numberOfSectionsToOpen + " levels have been unlocked.";
                 UIManager.Instance.rewardedButtonMessage.text = "Levels Screen";
                 UIManager.Instance.rewardAdZone.SetActive(false);
                 //DoozyManager.Instance.SendGameEvent("OpenedReward");
@@ -262,8 +266,10 @@ public class AdsManager : Singleton<AdsManager>
                     DoozyManager.Instance.SendGameEvent("LastEpisode");
                 }
 
-            }
-            else if (adUnitId==rewardedBonusBallsAdUnitId)
+                GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "OpenLevels");
+
+        }
+        else if (adUnitId==rewardedBonusBallsAdUnitId)
             {
                 GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "BonusBall");
                 Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));

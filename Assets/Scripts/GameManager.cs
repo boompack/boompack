@@ -684,8 +684,37 @@ public class GameManager : Singleton<GameManager>
                 }
 
             }
-            SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isLocked = false;
-            SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isPlayable = true;
+
+            if (PlayerPrefs.GetInt("PREMIUM") == 1)
+            {
+                if (levelLoader.loadedLevel.levelID != 300)
+                {
+                    SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isLocked = false;
+                    SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isPlayable = true;
+                    SaveManager.Instance.SaveLevelStats();
+                }
+            }
+
+            else
+            {
+                if (levelLoader.loadedLevel.levelID < 240)
+                {
+                    SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isLocked = false;
+                    SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isPlayable = true;
+                    SaveManager.Instance.SaveLevelStats();
+                }
+                else
+                {
+                    SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isLocked = false;
+                    SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isPlayable = false;
+                    SaveManager.Instance.SaveLevelStats();
+                }
+            }
+
+
+
+
+            
         }
         else
         {
@@ -747,9 +776,37 @@ public class GameManager : Singleton<GameManager>
             //}
             SaveManager.Instance.SaveLevelStat(levelLoader.loadedLevel.levelID, PointsManager.Instance.point, bonusUseCount, RepeatManager.Instance.repeatCount, Mathf.RoundToInt(timeLeft));
             WinScreenManager.Instance.SetGraphics(bonusUseCount, RepeatManager.Instance.repeatCount, Mathf.RoundToInt(timeLeft));
+            WinScreenManager.Instance.NextLevelText.text = GameManager.Instance.levelLoader.loadedLevel.levelID != 300 ? "Next Level" : "Next";
             //CheckEndEpisode();
             DoozyManager.Instance.SendGameEvent("WinGame");
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, Yardimcilar.GetLevelState(levelLoader.loadedLevel.levelID).ToString(), levelLoader.loadedLevel.levelID.ToString(), PointsManager.Instance.point);
+
+            //if (levelLoader.loadedLevel.levelID != 300)
+            //{
+            //    SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isLocked = false;
+            //    SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isPlayable = true;
+            //    SaveManager.Instance.SaveLevelStats();
+            //}
+
+            //if (PlayerPrefs.GetInt("PREMIUM") == 1)
+            //{
+            //    if (levelLoader.loadedLevel.levelID == 240)
+            //    {
+            //        SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isLocked = false;
+            //        SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isPlayable = true;
+            //        SaveManager.Instance.SaveLevelStats();
+            //    }
+            //}
+
+            //else
+            //{
+            //    if (levelLoader.loadedLevel.levelID == 240)
+            //    {
+            //        SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isLocked = false;
+            //        SaveManager.Instance.levelStats.levelStatsDict[levelLoader.loadedLevel.levelID + 1].isPlayable = false;
+            //        SaveManager.Instance.SaveLevelStats();
+            //    }
+            //}
 
         }
         else
@@ -1000,14 +1057,31 @@ public class GameManager : Singleton<GameManager>
 
     public void LoadNextLevel()
     {
-        if (continuedBalloonPopping != 0)
+        if (levelLoader.loadedLevel.levelID != 300)
         {
-            return;
+            if (continuedBalloonPopping != 0)
+            {
+                return;
+            }
+            SavePrefs();
+            StopAllCoroutines();
+            DestroyGameScene();
+            LevelManager.Instance.LoadLevel(levelLoader.loadedLevel.levelID + 1);
         }
-        SavePrefs();
-        StopAllCoroutines();
-        DestroyGameScene();
-        LevelManager.Instance.LoadLevel(levelLoader.loadedLevel.levelID + 1);
+        else
+        {
+            if (continuedBalloonPopping != 0)
+            {
+                return;
+            }
+            SavePrefs();
+            StopAllCoroutines();
+            DestroyGameScene();
+            LevelManager.Instance.LoadLevel(levelLoader.loadedLevel.levelID);
+        }
+
+
+
 
     }
 
