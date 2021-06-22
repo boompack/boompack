@@ -143,11 +143,11 @@ public class IAPManager : Singleton<IAPManager>, IStoreListener
                 {
                     SetPremium();
 
-                    StartCoroutine(MessageBox("Restore Purchases Completed"));
+                    //StartCoroutine(MessageBox("Restore Purchases Completed"));
                 }
                 else
                 {
-                    StartCoroutine(MessageBox("Restore Purchases Failed"));
+                    //StartCoroutine(MessageBox("Restore Purchases Failed"));
 
                 }
 
@@ -159,7 +159,7 @@ public class IAPManager : Singleton<IAPManager>, IStoreListener
         {
             // We are not running on an Apple device. No work is necessary to restore purchases.
             Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
-            StartCoroutine(MessageBox("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform));
+            //StartCoroutine(MessageBox("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform));
 
         }
     }

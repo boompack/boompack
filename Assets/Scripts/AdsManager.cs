@@ -74,10 +74,32 @@ public class AdsManager : Singleton<AdsManager>
                 //numberOfSectionsToOpen = rewardedZones.numberOfSectionsToOpen;
                 if (MaxSdk.IsRewardedAdReady(rewardedOpenLevelsAdUnitId))
                 {
-            GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "MAX", "OpenLevels");
+            //GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "MAX", "OpenLevels");
 
             MaxSdk.ShowRewardedAd(rewardedOpenLevelsAdUnitId);
-                }
+
+            SaveManager.Instance.OpenRewardedLevels();
+            SaveManager.Instance.SaveLevelStats();
+            PlayerPrefs.Save();
+            GameManager.Instance.SavePrefs();
+            SaveManager.Instance.LoadLevelStats();
+
+            UIManager.Instance.rewardedPanelMessage.text = "Your next " + AdsManager.Instance.numberOfSectionsToOpen + " levels have been unlocked.";
+            UIManager.Instance.rewardedButtonMessage.text = "Levels Screen";
+            UIManager.Instance.rewardAdZone.SetActive(false);
+            //DoozyManager.Instance.SendGameEvent("OpenedReward");
+
+            if (GameManager.Instance.levelLoader.loadedLevel.levelID == 300)
+            {
+                DoozyManager.Instance.SendGameEvent("LastGame");
+            }
+            else if ((GameManager.Instance.levelLoader.loadedLevel.levelID % 20) == 0)
+            {
+                DoozyManager.Instance.SendGameEvent("LastEpisode");
+            }
+
+            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "OpenLevels");
+        }
         //    }
         //}
 
@@ -90,8 +112,16 @@ public class AdsManager : Singleton<AdsManager>
         if (MaxSdk.IsRewardedAdReady(rewardedBonusBallsAdUnitId))
         {
 
-                GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "MAX", "BonusBall");
+                //GameAnalytics.NewAdEvent(GAAdAction.Show, GAAdType.RewardedVideo, "MAX", "BonusBall");
             MaxSdk.ShowRewardedAd(rewardedBonusBallsAdUnitId);
+            GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "BonusBall");
+            Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));
+            PlayerPrefs.SetInt("BonusBalloon1Count", PlayerPrefs.GetInt("BonusBalloon1Count") + 1);
+            GameManager.Instance.bonusBalloon1Count = PlayerPrefs.GetInt("BonusBalloon1Count");
+
+            Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));
+            PlayerPrefs.Save();
+            BonusBalloonUIManager.Instance.RefleshCounts();
         }
 
     }
@@ -246,39 +276,39 @@ public class AdsManager : Singleton<AdsManager>
             if(adUnitId==rewardedOpenLevelsAdUnitId)
             {
 
-                SaveManager.Instance.OpenRewardedLevels();
-                SaveManager.Instance.SaveLevelStats();
-                PlayerPrefs.Save();
-                GameManager.Instance.SavePrefs();
-                SaveManager.Instance.LoadLevelStats();
+            //    SaveManager.Instance.OpenRewardedLevels();
+            //    SaveManager.Instance.SaveLevelStats();
+            //    PlayerPrefs.Save();
+            //    GameManager.Instance.SavePrefs();
+            //    SaveManager.Instance.LoadLevelStats();
 
-            UIManager.Instance.rewardedPanelMessage.text = "Your next " + AdsManager.Instance.numberOfSectionsToOpen + " levels have been unlocked.";
-                UIManager.Instance.rewardedButtonMessage.text = "Levels Screen";
-                UIManager.Instance.rewardAdZone.SetActive(false);
-                //DoozyManager.Instance.SendGameEvent("OpenedReward");
+            //UIManager.Instance.rewardedPanelMessage.text = "Your next " + AdsManager.Instance.numberOfSectionsToOpen + " levels have been unlocked.";
+            //    UIManager.Instance.rewardedButtonMessage.text = "Levels Screen";
+            //    UIManager.Instance.rewardAdZone.SetActive(false);
+            //    //DoozyManager.Instance.SendGameEvent("OpenedReward");
 
-                if (GameManager.Instance.levelLoader.loadedLevel.levelID == 300)
-                {
-                    DoozyManager.Instance.SendGameEvent("LastGame");
-                }
-                else if ((GameManager.Instance.levelLoader.loadedLevel.levelID % 20) == 0)
-                {
-                    DoozyManager.Instance.SendGameEvent("LastEpisode");
-                }
+            //    if (GameManager.Instance.levelLoader.loadedLevel.levelID == 300)
+            //    {
+            //        DoozyManager.Instance.SendGameEvent("LastGame");
+            //    }
+            //    else if ((GameManager.Instance.levelLoader.loadedLevel.levelID % 20) == 0)
+            //    {
+            //        DoozyManager.Instance.SendGameEvent("LastEpisode");
+            //    }
 
-                GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "OpenLevels");
+            //    GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "OpenLevels");
 
         }
         else if (adUnitId==rewardedBonusBallsAdUnitId)
             {
-                GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "BonusBall");
-                Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));
-                PlayerPrefs.SetInt("BonusBalloon1Count", PlayerPrefs.GetInt("BonusBalloon1Count") + 1);
-                GameManager.Instance.bonusBalloon1Count = PlayerPrefs.GetInt("BonusBalloon1Count");
+            //    GameAnalytics.NewAdEvent(GAAdAction.RewardReceived, GAAdType.RewardedVideo, "MAX", "BonusBall");
+            //    Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));
+            //    PlayerPrefs.SetInt("BonusBalloon1Count", PlayerPrefs.GetInt("BonusBalloon1Count") + 1);
+            //    GameManager.Instance.bonusBalloon1Count = PlayerPrefs.GetInt("BonusBalloon1Count");
 
-            Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));
-                PlayerPrefs.Save();
-            BonusBalloonUIManager.Instance.RefleshCounts();
+            //Debug.Log(PlayerPrefs.GetInt("BonusBalloon1Count"));
+            //    PlayerPrefs.Save();
+            //BonusBalloonUIManager.Instance.RefleshCounts();
 
         }
     }
